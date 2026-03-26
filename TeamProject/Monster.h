@@ -11,6 +11,8 @@ using namespace std;
 	dead
 }; */
 
+class Player;
+
 class Monster
 {
 private:
@@ -27,7 +29,9 @@ public:
 	void Firstspeech() const;
 	void TakeDamage(int damage);
 	void Attack() const;
+	void Dropitem() const;
 	bool isDead() const;
+	//void Dropitem(const Player & player) const; //플레이어 LUK수치가 있을 때
 	//void SetDead() const;
 
 };

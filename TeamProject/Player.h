@@ -1,4 +1,4 @@
-ï»¿#pragma once
+#pragma once
 #include <iostream>
 #include <string>
 #include <algorithm>
@@ -7,22 +7,22 @@ class Player
 {
 private:
 	std::string Name;
-	unsigned int Level; // Level ìŒìˆ˜ì•ˆë˜ë„ë¡ unsignedë¡œ ì„ ì–¸
+	int Level;
 	int Hp;
 	int MaxHp;
 	int ATK;
 	int EXP;
 	// int LUCK; 
-	int GOLD = 0;
-	const int MaxExp = 100;		// ìµœëŒ€ Exp 100ìœ¼ë¡œ ê³ ì •
+	int GOLD = 0;				// °ñµå º¯¼ö¸í Á¶À² ÇØ¾ßÇÔ
+	const int MaxExp = 100;		// ÃÖ´ë Exp 100À¸·Î °íÁ¤
 
 
 public:
-	Player(std::string name);	// Player ìƒì„±: ì´ë¦„ ì„¤ì • ë° ì´ˆê¸°í™”
+	Player(std::string name);	// Player »ı¼º: ÀÌ¸§ ¼³Á¤ ¹× ÃÊ±âÈ­
 
-	~Player(); // ì†Œë©¸
+	~Player(); // ¼Ò¸ê
 
-	void ShowStatus() const;	// ìƒíƒœ í™•ì¸
+	void ShowStatus() const;	// »óÅÂ È®ÀÎ
 
 	//GetSet
 	//int GetGold() const { return GOLD; }
@@ -34,32 +34,32 @@ public:
 	int GetAtk() const { return ATK; }
 	int GetGold() const { return GOLD; }
 
-	// [ì „íˆ¬ ì‹œìŠ¤í…œ] ë°ë¯¸ì§€ ì…ìŒ
+	// [ÀüÅõ ½Ã½ºÅÛ] µ¥¹ÌÁö ÀÔÀ½
 	void TakeDamage(int damage)
 	{
 		Hp = std::max(0, Hp - damage);
 	}
 
-	// [ì „íˆ¬ ì‹œìŠ¤í…œ] ê³¨ë“œ íšë“ 
+	// [ÀüÅõ ½Ã½ºÅÛ] °ñµå È¹µæ 
 	// ex) player.AddGold(monster.DropGold(100));
 	void AddGold(int Gamount)
 	{
 		GOLD += Gamount;
-		std::cout << Gamount << " ê³¨ë“œë¥¼ íšë“í–ˆìŠµë‹ˆë‹¤! (í˜„ì¬: " << GOLD << "G)" << std::endl;
+		std::cout << Gamount << " °ñµå¸¦ È¹µæÇß½À´Ï´Ù! (ÇöÀç: " << GOLD << "G)" << std::endl;
 	}
 
-	// [ì „íˆ¬ ì‹œìŠ¤í…œ] ê²½í—˜ì¹˜ íšë“
+	// [ÀüÅõ ½Ã½ºÅÛ] °æÇèÄ¡ È¹µæ
 	// ex) player.GainExp(50);
-    void GainExp(int exp);
+	void GainExp(int exp);
 
-	// [ì•„ì´í…œ] ì²´ë ¥ íšŒë³µ
+	// [¾ÆÀÌÅÛ] Ã¼·Â È¸º¹
 	// ex) player.HealHp(50);
 	void HealHp(int Hpamount)
 	{
 		Hp = std::min(MaxHp, Hp + Hpamount);
 	}
 
-	// [ì•„ì´í…œ ë° ë ˆë²¨ì—…] ê³µê²©ë ¥ ì¦ê°€
+	// [¾ÆÀÌÅÛ ¹× ·¹º§¾÷] °ø°İ·Â Áõ°¡
 	// ex) player.AddAtk(10);
 	void AddAtk(int Atkamount) { ATK += Atkamount; }
 };

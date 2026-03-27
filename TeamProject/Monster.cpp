@@ -1,8 +1,6 @@
 //Monster.cpp
 
-//#include "Player.h" //플레이어 헤드파일 추가.
-//#include "Itemtable.h" //추후에 추가될 아이템 테이블 헤드파일 추가.
-
+#include "Player.h"
 #include "Monster.h"
 #include <iostream>
 #include <cstdlib>
@@ -14,24 +12,37 @@ struct AttackEvent {
 	int damage;
 };
 
-Monster::Monster(string name, int playerlevel)
+Monster::Monster(string name, int playerlevel) : Monster()
 {
 	this->name = name;
 	Level = playerlevel;
 	//체력
 		int minHP = Level * 20;
-		int maxHP = Level * 30;
-	HP = rand() % (maxHP - minHP + 1) + minHP;
-	MaxHP = HP;
+		int maxHPRange = Level * 30;
+	HP = rand() % (maxHPRange - minHP + 1) + minHP;
+	MaxHP = HP; //가오나시 흡수스킬을 위해 Monster.h에 int MaxHP; 를 추가
 
+	if (HP <= 0)
+	{
+		HP = 0;
+	}
 
 	//공격력
-	int minATK = Level * 5;
-	int maxATK = Level * 10;
+		int minATK = Level * 5;
+		int maxATK = Level * 10;
 	ATK = rand() % (maxATK - minATK + 1) + minATK;
+
+	if (ATK <= 0)
+	{
+		ATK = 0;
+	}
 }
 
-
+Monster::Monster()
+{
+	Reward.EXP = 50;
+	Reward.GOLD = rand() % 11 + 10;
+}
 
 //등장출력
 void Monster::Firstspeech() const
@@ -40,15 +51,15 @@ void Monster::Firstspeech() const
 	
 }
 
+//공격출력
 void Monster::Attack() const
 {
 	AttackEvent event;
 	event.target = "Player";
 	event.damage = ATK;
 
-	//std::cout << name << "이(가)" << event.target << "에게" << enemyitem(돌) << "을(를) 사용해서 공격했다!\n"
 	std::cout << name << "이(가) " << event.target << "을(를) 공격했다!\n"
-		<< event.target << "에게 " << event.damage << "만큼 피해를 입혔다!";
+		<< event.target << "에게 " << event.damage << "만큼 피해를 입혔다!" << std::endl;
 }
 
 //데미지 받음
@@ -62,10 +73,15 @@ void Monster::TakeDamage(int damage)
 bool Monster::isDead() const
 {
 	return HP <= 0;
-	//Dropitem();
 }
 
-void Monster::Dropitem() const
+const Rewardinfo& Monster::Dropitem() const
+{
+	return Reward;
+}
+
+
+/**void Monster::Dropitem() const
 {
 	int DropChance = rand() % 100;
 
@@ -73,7 +89,7 @@ void Monster::Dropitem() const
 	{
 		std::cout << name << "이(가) 아이템을 드랍했습니다.\n";
 	}
-}
+}*/
 
 /*
 // 플레이어가 LUK 수치가 존재할 경우

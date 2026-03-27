@@ -16,27 +16,65 @@ Monster::Monster(string name, int playerlevel) : Monster()
 {
 	this->name = name;
 	Level = playerlevel;
+	/*
 	//체력
 		int minHP = Level * 20;
 		int maxHPRange = Level * 30;
 	HP = rand() % (maxHPRange - minHP + 1) + minHP;
 	MaxHP = HP; //가오나시 흡수스킬을 위해 Monster.h에 int MaxHP; 를 추가
+	*/
 
+	
+	if (name == "시궁쥐")
+	{
+		HP = Level * 20;
+		ATK = Level * 5;
+	}
+
+	else if (name == "미니피그")
+	{
+		HP = Level * 25;
+		ATK = Level * 6;
+	}
+
+	else if (name == "고블린")
+	{
+		HP = Level * 22;
+		ATK = Level * 9;
+	}
+
+	else if (name == "멧돼지")
+	{
+		HP = Level * 30;
+		ATK = Level * 10;
+	}
+	else
+	{
+		//기본값
+		HP = Level * 20;
+		ATK = Level * 5;
+	}
+
+	MaxHP = HP; //소화 스킬을 위한 온전한 최대 체력 수치
+
+	//마이너스 스탯 방지
 	if (HP <= 0)
 	{
 		HP = 0;
 	}
-
-	//공격력
-		int minATK = Level * 5;
-		int maxATK = Level * 10;
-	ATK = rand() % (maxATK - minATK + 1) + minATK;
 
 	if (ATK <= 0)
 	{
 		ATK = 0;
 	}
 }
+	/*
+	//공격력
+		int minATK = Level * 5;
+		int maxATK = Level * 10;
+	ATK = rand() % (maxATK - minATK + 1) + minATK;
+	*/
+
 
 Monster::Monster()
 {
@@ -50,6 +88,7 @@ void Monster::Firstspeech() const
 	std::cout << name << "이(가) 등장했다 ! "<< std::endl;
 	
 }
+
 
 //공격출력
 void Monster::Attack() const

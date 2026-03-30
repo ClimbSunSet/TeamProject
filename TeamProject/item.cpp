@@ -6,8 +6,10 @@ using namespace std;
 // [아이템 사전]
 static map<string, pair<string, int>> ItemCreate = {
 {"체력물약", {"1", 50}},
-{"시궁창쥐", {"2", 0}},
-{"미니피그", {"2", 0}}
+{"미니피그", {"2", 0}},
+{"시궁쥐", {"2", 0}},
+{"고블린", {"2", 0}},
+{ "멧돼지", {"2", 0} }
 };
 
 
@@ -35,7 +37,7 @@ void Item::Use(Player* player) {
 			cout << " >> 최대 체력이 " << MaxHP << " 증가했습니다." << endl;
 		}
 		if (ATK > 0) {
-			player->SetAtk(player->GetAtk() + ATK); // 스탯 전달 
+			player->SetATK(player->GetATK() + ATK); // 스탯 전달 
 			cout << " >> 공격력이 " << ATK << " 증가했습니다." << endl;
 		}
 	}

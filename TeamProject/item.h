@@ -32,7 +32,7 @@ public:
 			this->ATK = ATK;
 		}
 	}
-
+	int getHP() const { return HP; }
 	virtual ~Item() {}
 
 	string getName() const { return name; }

@@ -28,4 +28,6 @@ public:
 
 	// 5.전체 아이템 출력
 	void AllItems() const;
+
+	int UsePotionAuto();
 };

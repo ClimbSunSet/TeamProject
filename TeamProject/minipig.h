@@ -1,12 +1,12 @@
-//goblin.h
+//minipig.h
 
 #pragma once
 #include "Monster.h"
 
-class goblin : public Monster
+class minipig : public Monster
 {
 public:
-	goblin(int playerLevel);
+	minipig(int playerLevel);
 	void Attack() override;
 };
 

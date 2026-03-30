@@ -17,7 +17,7 @@ class Player;
 class Monster
 {
 private:
-	string name;
+	string Name;
 	int Level; //레벨
 	int HP; //현재HP
 	int ATK; //공격력
@@ -29,14 +29,17 @@ public:
 	Monster(string name, int playerlevel);
 	Monster();
 
+	virtual ~Monster() {} //소멸자 구현
+	virtual void Attack() = 0; //클래스마다 하기
+
 	void Firstspeech() const;
 	void TakeDamage(int damage);
-	void Attack() const;
 	bool isDead() const;
 	const Rewardinfo& Dropitem() const;
 
 	//Getter 추가
-	string GetName() const { return name; }
+	string GetName() const { return Name; }
+	int GetLevel() const { return Level; }
 	int GetHP() const { return HP; }
 	int GetATK() const { return ATK; }
 	int GetMaxHP() const { return MaxHP; }

@@ -14,7 +14,7 @@ struct AttackEvent {
 
 Monster::Monster(string name, int playerlevel) : Monster()
 {
-	this->name = name;
+	this->Name = name;
 	Level = playerlevel;
 	/*
 	//체력
@@ -25,25 +25,25 @@ Monster::Monster(string name, int playerlevel) : Monster()
 	*/
 
 	
-	if (name == "시궁쥐")
+	if (Name == "시궁쥐")
 	{
 		HP = Level * 20;
 		ATK = Level * 5;
 	}
 
-	else if (name == "미니피그")
+	else if (Name == "미니피그")
 	{
 		HP = Level * 25;
 		ATK = Level * 6;
 	}
 
-	else if (name == "고블린")
+	else if (Name == "고블린")
 	{
 		HP = Level * 22;
 		ATK = Level * 9;
 	}
 
-	else if (name == "멧돼지")
+	else if (Name == "멧돼지")
 	{
 		HP = Level * 30;
 		ATK = Level * 10;
@@ -85,20 +85,8 @@ Monster::Monster()
 //등장출력
 void Monster::Firstspeech() const
 {
-	std::cout << name << "이(가) 등장했다 ! "<< std::endl;
+	std::cout << Name << "이(가) 등장했다 ! "<< std::endl;
 	
-}
-
-
-//공격출력
-void Monster::Attack() const
-{
-	AttackEvent event;
-	event.target = "Player";
-	event.damage = ATK;
-
-	std::cout << name << "이(가) " << event.target << "을(를) 공격했다!\n"
-		<< event.target << "에게 " << event.damage << "만큼 피해를 입혔다!" << std::endl;
 }
 
 //데미지 받음

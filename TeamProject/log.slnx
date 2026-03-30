@@ -1,7 +1,50 @@
-<Solution>
-  <Configurations>
-    <Platform Name="x64" />
-    <Platform Name="x86" />
-  </Configurations>
-  <Project Path="log/log.vcxproj" Id="13c67a81-4bd5-4205-9681-1da6e61a718a" />
-</Solution>
+//Log.cpp
+
+#pragma	once
+#include <string>
+
+using namespace std;
+
+/*enum class State : uint8_t
+{
+     alive
+     dead
+}; */
+
+class Player;
+
+MaxHP = HP; //가오나시 흡수스킬을 위해 Monster.h에 int MaxHP; 
+
+if (player.GetLevel() <= 0)
+{
+    player.SetLevel(0)
+}
+
+포션 먹는 행위를 하면 함수내에서 포션을 가져와
+일정 체력 미만일때 체력 포션 자동 회복
+원래 이름은 가오나시인데 이름 바꾸겠습니까 추가
+bool isDead = 0;
+
+void setdead
+hp <= 0
+if (isDead == 1)
+
+슬라임
+적 몬스터가 HP가 0일 때 포식 스킬 사용 함수 생성
+호출하면 먹을 수 있게
+
+int A = rand() % 100 + Luck;
+if (A < 50)
+
+int skill: 포식, 소화.(실패 시 일정 능력치 하락 혹은 특정 능력치 하락)
+
+포식은 몬스터 체력이 15퍼 미만일 때 UI로 처형 표식
+럭으로 수치 오름
+(지처있다 먹을 수 있을거 같다)
+포식 성공 확률은 기본 50
+포식하면 영혼(시체) 보관
+LUCK수치 반영해서 성공 확률 올라가게
+15퍼 미만일 때 처형(징총)
+포식은 인벤토리로 보관넘김
+
+소화(LUCK으로 보정 도전)

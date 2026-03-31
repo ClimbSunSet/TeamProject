@@ -4,16 +4,20 @@
 
 #include "Player.h"
 #include "Monster.h"
-#include "Rewardinfo.h"
+#include "Structs.h"
 
 #include <iostream>
+#include <vector>
+
+class GameSystem;
 
 class BattleSystem
 {
 public:
 
-	void Battle(Player& player, Monster& monster, Rewardinfo reward);
+	bool Battle(Player& player, Structs::MonsterRewardInfo reward, GameSystem& random);
 
-	Rewardinfo BattleReward(Player& player, Rewardinfo reward);
+	Structs::MonsterRewardInfo BattleReward(Player& player, Structs::MonsterRewardInfo reward);
+
+	void UsePotion(Player& player);
 };
-

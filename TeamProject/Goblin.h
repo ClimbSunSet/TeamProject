@@ -1,12 +1,19 @@
-//goblin.h
+// Goblin.h
 
 #pragma once
+
+#include <iostream>
+#include <string>
+
 #include "Monster.h"
 
-class goblin : public Monster
+class Goblin : public Monster
 {
 public:
-	goblin(int playerLevel);
+	Goblin(int level) : Monster(level, std::string("°íºí¸°")) {}
+
 	void Attack() override;
+private:
+
 };
 

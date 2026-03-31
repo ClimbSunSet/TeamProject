@@ -1,53 +1,43 @@
-//Monster.h
+// Monster.h
 
 #pragma once
-#include "Rewardinfo.h"
+
+#include <iostream>
 #include <string>
-
-using namespace std;
-
-/*enum class State : uint8_t
-{
-	alive
-	dead
-}; */
-
-class Player;
+#include <cstdlib>
 
 class Monster
 {
-private:
-	string Name;
-	int Level; //레벨
-	int HP; //현재HP
-	int ATK; //공격력
-	int MaxHP; //몬스터의 최대 HP를 따로 저장용
-	
-
 public:
-	// 생성자
-	Monster(string name, int playerlevel);
-	Monster();
+	Monster(int level, std::string name);
+	virtual ~Monster() {};
 
-	virtual ~Monster() {} //소멸자 구현
-	virtual void Attack() = 0; //클래스마다 하기
+	virtual void Attack() = 0;
+	void TakeDamage(int Damage);
+	void SetDead();
 
-	void Firstspeech() const;
-	void TakeDamage(int damage);
-	bool isDead() const;
-	const Rewardinfo& Dropitem() const;
+	std::string GetName() const;
+	int GetHP() const;
+	int GetATK() const;
+	bool GetisDead() const;
+	int GetMaxHP() const;
+	int GetMaxATK() const;
 
-	//Getter 추가
-	string GetName() const { return Name; }
-	int GetLevel() const { return Level; }
-	int GetHP() const { return HP; }
-	int GetATK() const { return ATK; }
-	int GetMaxHP() const { return MaxHP; }
+	void SetName(std::string NewName);
+	void SetHP(int NewHP);
+	void SetATK(int NewATK);
+	void SetisDead(bool NewisDead);
+	void SetMaxHP(int newMaxHP);
 
-	Rewardinfo Reward;
-	
-	//void Dropitem(const Player & player) const; //플레이어 LUK수치가 있을 때
-	//void SetDead() const;
+	bool isPredated = false;
 
+private:
+	std::string Name;
+	int HP;
+	int MaxHP;
+	int ATK;
+	int MaxATK = ATK;
+	bool isDead = false;
+	std::string DropItem;
 };
 

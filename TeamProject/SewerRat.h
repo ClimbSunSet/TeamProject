@@ -1,4 +1,4 @@
-// MiniPig.h
+// SewerRat.h
 
 #pragma once
 
@@ -7,12 +7,13 @@
 
 #include "Monster.h"
 
-class MiniPig : public Monster
+class SewerRat : public Monster
 {
 public:
-	MiniPig(int level) : Monster(level, std::string("¹Ì´ÏÇÇ±×")) {}
+	SewerRat(int level) : Monster(level, std::string("½Ã±ÃÁã")) {}
 
 	void Attack() override;
 private:
-
+	
 };
+

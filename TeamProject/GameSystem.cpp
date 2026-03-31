@@ -1,4 +1,4 @@
-// GameSystem.cpp
+ï»¿// GameSystem.cpp
 
 #include "GameSystem.h"
 
@@ -6,12 +6,13 @@ void GameSystem::GameStart()
 {
 	std::string NickName;
 
-	std::cout << "ÇÃ·¹ÀÌ¾îÀÇ ÀÌ¸§ ÀÔ·ÂÇØÁÖ¼¼¿ä!" << std::endl;
-	std::cout << "ÀÔ·Â : ";
+    system("cls"); // ì´ë¦„ ìž…ë ¥ ì „ í™”ë©´ ì •ë¦¬ (ê¹€ì¤€íƒœ)
+	std::cout << "í”Œë ˆì´ì–´ì˜ ì´ë¦„ ìž…ë ¥í•´ì£¼ì„¸ìš”!" << std::endl;
+	std::cout << "ìž…ë ¥ : ";
 	std::cin >> NickName;
 
 	player = Player(NickName);
-	std::cout << "ÇÃ·¹ÀÌ¾î°¡ »ý¼º µÇ¾ú½À´Ï´Ù!" << std::endl;
+	std::cout << "í”Œë ˆì´ì–´ê°€ ìƒì„± ë˜ì—ˆìŠµë‹ˆë‹¤!" << std::endl;
 
 }
 
@@ -19,13 +20,13 @@ void GameSystem::RunBattle()
 {
 	BattleSystem BS;
 	Structs::MonsterRewardInfo reward = {};
-	BS.Battle(player, reward, *this);
+	BS.Battle(player, reward, *this, UI); // , UIì¶”ê°€ (ê¹€ì¤€íƒœ)
 	
 }
 
 void GameSystem::RunRest()
 {
-	std::cout << "ºÐ±âÁ¡¿¡¼­ ¼ÒÈ­¸¦ ½ÃµµÇÕ´Ï´Ù!" << std::endl;
+	std::cout << "ë¶„ê¸°ì ì—ì„œ ì†Œí™”ë¥¼ ì‹œë„í•©ë‹ˆë‹¤!" << std::endl;
 	player.SkillDigestion();
 }
 

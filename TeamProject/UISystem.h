@@ -1,4 +1,4 @@
-// UISystem.h
+﻿// UISystem.h
 
 #pragma once
 
@@ -13,6 +13,9 @@ public:
 	void GameMain();
 	void PrintStatus(Player player);
 
-private:
-	void SetCursor(int x, int y);
+    void PrintMessage(std::string msg, int line); // TEST용(김준태)
+    void SetCursor(int x, int y); // private에 있던거 위로 올림 (김준태)
+
+//private:
+//	void SetCursor(int x, int y);
 };

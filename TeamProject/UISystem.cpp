@@ -4,8 +4,18 @@
 
 void UISystem::SetCursor(int x, int y)
 {
-	COORD pos = { x, y };
+    COORD pos = { static_cast<SHORT>(x), static_cast<SHORT>(y) }; // TEST용 (김준태)
+	/*COORD pos = { x, y };*/
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
+}
+
+// TEST용 (김준태)
+void UISystem::PrintMessage(std::string msg, int line)
+{
+    SetCursor(12, 3 + line);
+    std::cout << "                                                                   "; // 이전 줄 지우기
+    SetCursor(12, 3 + line);
+    std::cout << ">> " << msg;
 }
 
 void UISystem::GameMain()

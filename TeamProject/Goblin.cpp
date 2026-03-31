@@ -1,13 +1,8 @@
-//goblin.cpp
+// Goblin.cpp
 
-#include "goblin.h"
-#include <iostream>
+#include "Goblin.h"
 
-goblin::goblin(int playerLevel) : Monster("고블린", playerLevel)
+void Goblin::Attack()
 {
-
-}
-void goblin::Attack()
-{
-	std::cout << "고블린이 야만의 뭉둥이로 야만적이게 공격합니다! \n" << std::endl;
+	std::cout << "고블린이 뭉둥이를 휘두릅니다!" << std::endl;
 }

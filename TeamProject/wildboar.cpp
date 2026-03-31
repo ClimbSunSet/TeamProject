@@ -1,14 +1,8 @@
-//wildboar.cpp
+// WildBoar.cpp
 
-#include "wildboar.h"
-#include <iostream>
+#include "WildBoar.h"
 
-wildboar::wildboar(int playerLevel) : Monster("멧돼지", playerLevel)
+void WildBoar::Attack()
 {
-
-}
-
-void wildboar::Attack()
-{
-	std::cout << "멧돼지가 전 미니피그와는 다르게 강한 박치기로 공격합니다. \n" << std::endl;
+	std::cout << "멧돼지가 돌진합니다!" << std::endl;
 }

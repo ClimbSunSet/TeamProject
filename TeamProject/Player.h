@@ -2,10 +2,11 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
-#include "Inventory.h"
+#include <vector>
+
 #include "Item.h"
 
-class Monster; // 몬스터 전방선언
+class Monster;
 class Item;
 
 class Player
@@ -19,17 +20,19 @@ private:
     int EXP;
     int LUK;
     int GOLD = 0;
-    const int MaxEXP = 100;
-    bool isDead = 0;
+    bool isDead = false;
+    bool isAttackBuffActive;
+    std::vector<Monster*> predatedMonsters;
+    std::vector<Item*> inventory;
 
-    Inventory myInventory;
-
-    void SetDead(); // 사망여부 확인
+    int MaxEXP = 100;		// 최대 Exp 100으로 고정
+    int MaxLevel = 10;
+    int MinLevel = 1;
 
 public:
-    Player(std::string name = "가오나시");	// Player 초기 이름인 가오나시로 생성
+    Player(std::string name);
 
-    ~Player();                  // 소멸
+    Player(); // GameSystem이 사용할 생성자임.
 
     // Getter
     std::string GetName() const;
@@ -37,36 +40,34 @@ public:
     int GetHP() const;
     int GetMaxHP() const;
     int GetATK() const;
-    int GetLuk() const;
-    bool GetisDead() const;
-    Inventory& GetInventory() { return myInventory; }
+    int GetEXP() const;
+    int GetLUK() const;
+    int GetGOLD() const;
+    bool GetIsDead() const;
+    bool GetIsAttackBuffActive() const;
+    std::vector<Item*> GetInventory();
+    std::vector<Monster*> GetPredatedMonsters();
 
     // Setter
-    void SetName(const std::string& newName);
-    void SetLevel(unsigned int newLevel);
+    void SetName(std::string newName);
+    void SetLevel(int newLevel);
     void SetHP(int newHP);
     void SetMaxHP(int newMaxHP);
-    void SetATK(int newAtk);
-    void SetLuk(int newLuk);
-    void SetisDead(bool dead);
+    void SetATK(int newATK);
+    void SetEXP(int newEXP);
+    void SetLUK(int newLUK);
+    void SetGOLD(int newGOLD);
+    void SetIsAttackBuffActive(bool value);
 
+    void AddEXP(int amount);
+    void LevelUp();
 
-    // 주요 기능들
+    void AddItem(Item* item);
 
-    // 상태 확인
-    void ShowStatus() const;
-
-    // 포식 스킬 함수 정의
-    void SkillPredation(Monster* target);
-
-    // 소화 스킬 함수 정의
-    void SkillDigestion(Item* targetItem);
-
-    // 자동 회복 체크 함수
-    void CheckAutoHeal();
-
-    void Attack(Monster* target);
+    void Attack();
     void TakeDamage(int damage);
-    void HealHP(int Hpamount);
-    void AddAtk(int Atkamount) { ATK += Atkamount; }
+    void SetDead();
+
+    void SkillPredation(Monster* monster);
+    void SkillDigestion();
 };

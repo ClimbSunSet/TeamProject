@@ -1,12 +1,19 @@
-//wildboar.h
+// WildBoar.h
 
 #pragma once
+
+#include <iostream>
+#include <string>
+
 #include "Monster.h"
 
-class wildboar : public Monster
+class WildBoar : public Monster
 {
 public:
-	wildboar(int playerLevel);
+	WildBoar(int level) : Monster(level, std::string("¸äµÅÁö")) {};
+
 	void Attack() override;
+private:
+
 };
 

@@ -1,4 +1,4 @@
-// SewerRat.h
+ï»¿// SewerRat.h
 
 #pragma once
 
@@ -10,7 +10,7 @@
 class SewerRat : public Monster
 {
 public:
-	SewerRat(int level) : Monster(level, std::string("½Ã±ÃÁã")) {}
+    SewerRat(int level) : Monster(level, std::string("ì‹œê¶ì¥")) {}
 
 	void Attack() override;
 private:

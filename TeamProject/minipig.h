@@ -1,4 +1,4 @@
-// MiniPig.h
+ï»¿// MiniPig.h
 
 #pragma once
 
@@ -10,7 +10,7 @@
 class MiniPig : public Monster
 {
 public:
-	MiniPig(int level) : Monster(level, std::string("¹Ì´ÏÇÇ±×")) {}
+    MiniPig(int level) : Monster(level, std::string("ë¯¸ë‹ˆí”¼ê·¸")) {}
 
 	void Attack() override;
 private:

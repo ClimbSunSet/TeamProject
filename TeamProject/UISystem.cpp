@@ -1,122 +1,74 @@
 ﻿// UISystem.cpp
 
 #include "UISystem.h"
+#include <iostream>
 
 void UISystem::SetCursor(int x, int y)
 {
-    COORD pos = { static_cast<SHORT>(x), static_cast<SHORT>(y) }; // TEST용 (김준태)
-	/*COORD pos = { x, y };*/
-	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
+    // SHORT 캐스팅으로 안정성 확보 (김준태)
+    COORD pos = { static_cast<SHORT>(x), static_cast<SHORT>(y) };
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
 }
 
-// TEST용 (김준태)
+// 메시지 출력 함수 (이전 줄 지우기 포함)
 void UISystem::PrintMessage(std::string msg, int line)
 {
-    SetCursor(12, 3 + line);
-    std::cout << "                                                                   "; // 이전 줄 지우기
-    SetCursor(12, 3 + line);
+    // 로그 영역의 시작 위치 (김준태)
+    int startX = 12;
+    int startY = 3;
+
+    SetCursor(startX, startY + line);
+    // 70칸의 표준 공백으로 이전 텍스트를 깨끗하게 지움 (김준태)
+    std::cout << "                                                                      ";
+
+    SetCursor(startX, startY + line);
     std::cout << ">> " << msg;
 }
 
 void UISystem::GameMain()
 {
-	SetCursor(0, 1);
-	std::cout << "          " << "===================================================================================" << std::endl;
+    // 상단 로그 박스 가로선
+    SetCursor(10, 1);
+    std::cout << "=================================================================================";
 
-	SetCursor(0, 2);
-	std::cout << "          " << "|" << "                                                                                 " << "|" << std::endl;  
+    // 상단 로그 박스 세로벽 (2번부터 19번 라인까지 반복문으로 안전하게 출력)
+    for (int i = 2; i <= 19; i++)
+    {
+        SetCursor(10, i);
+        std::cout << "|"; // 왼쪽 벽
+        SetCursor(91, i);
+        std::cout << "|"; // 오른쪽 벽 (공백으로 밀지 않고 좌표로 직접 찍음 - 김준태)
+    }
 
-	SetCursor(0, 3);
-	std::cout << "          " << "|" << "                                                                                 " << "|" << std::endl;  
+    // 상단 로그 박스 하단 가로선
+    SetCursor(10, 20);
+    std::cout << "=================================================================================";
 
-	SetCursor(0, 4);
-	std::cout << "          " << "|" << "                                                                                 " << "|" << std::endl;  
+    // 하단 스탯/명령창 상단 가로선
+    SetCursor(10, 22);
+    std::cout << "====================  ===========================================================";
 
-	SetCursor(0, 5);
-	std::cout << "          " << "|" << "                                                                                 " << "|" << std::endl;  
+    // 하단 박스 세로벽 (23번부터 28번 라인까지)
+    for (int i = 23; i <= 28; i++)
+    {
+        SetCursor(10, i); std::cout << "|"; // 왼쪽 끝
+        SetCursor(30, i); std::cout << "|"; // 스탯창 오른쪽
+        SetCursor(32, i); std::cout << "|"; // 명령창 왼쪽
+        SetCursor(91, i); std::cout << "|"; // 오른쪽 끝
+    }
 
-	SetCursor(0, 6);
-	std::cout << "          " << "|" << "                                                                                 " << "|" << std::endl;  
-
-	SetCursor(0, 7);
-	std::cout << "          " << "|" << "                                                                                 " << "|" << std::endl;  
-
-	SetCursor(0, 8);
-	std::cout << "          " << "|" << "                                                                                 " << "|" << std::endl;  
-
-	SetCursor(0, 9);
-	std::cout << "          " << "|" << "                                                                                 " << "|" << std::endl;  
-
-	SetCursor(0, 10);
-	std::cout << "          " << "|" << "                                                                                 " << "|" << std::endl;  
-	
-	SetCursor(0, 11);
-	std::cout << "          " << "|" << "                                                                                 " << "|" << std::endl;  
-
-	SetCursor(0, 12);
-	std::cout << "          " << "|" << "                                                                                 " << "|" << std::endl;  
-
-	SetCursor(0, 13);
-	std::cout << "          " << "|" << "                                                                                 " << "|" << std::endl;
-
-	SetCursor(0, 14);
-	std::cout << "          " << "|" << "                                                                                 " << "|" << std::endl;
-
-	SetCursor(0, 15);
-	std::cout << "          " << "|" << "                                                                                 " << "|" << std::endl;
-
-	SetCursor(0, 16);
-	std::cout << "          " << "|" << "                                                                                 " << "|" << std::endl;
-
-	SetCursor(0, 17);
-	std::cout << "          " << "|" << "                                                                                 " << "|" << std::endl;
-
-	SetCursor(0, 18);
-	std::cout << "          " << "|" << "                                                                                 " << "|" << std::endl;
-
-	SetCursor(0, 19);
-	std::cout << "          " << "|" << "                                                                                 " << "|" << std::endl;
-
-	SetCursor(0, 20);
-	std::cout << "          " << "===================================================================================" << std::endl;
-
-	SetCursor(0, 22);
-	std::cout << "          " << "====================  =============================================================" << std::endl;
-
-	SetCursor(0, 23);
-	std::cout << "          " << "|" << "                  |  |                                                           " << "|" << std::endl;
-
-	SetCursor(0, 24);
-	std::cout << "          " << "|" << "                  |  |                                                           " << "|" << std::endl;
-
-	SetCursor(0, 25);
-	std::cout << "          " << "|" << "                  |  |                                                           " << "|" << std::endl;
-
-	SetCursor(0, 26);
-	std::cout << "          " << "|" << "                  |  |                                                           " << "|" << std::endl;
-
-	SetCursor(0, 27);
-	std::cout << "          " << "|" << "                  |  |                                                           " << "|" << std::endl;
-
-	SetCursor(0, 28);
-	std::cout << "          " << "|" << "                  |  |                                                           " << "|" << std::endl;
-
-	SetCursor(0, 29);
-	std::cout << "          " << "====================  =============================================================" << std::endl;
+    // 하단 박스 최하단 가로선
+    SetCursor(10, 29);
+    std::cout << "====================  ===========================================================";
 }
 
 void UISystem::PrintStatus(Player player)
 {
-	SetCursor(14, 23);
-	std::cout << "  [ STAT ] " << std::endl;
-	SetCursor(14, 24);
-	std::cout << "HP = " << player.GetHP() << "/" << player.GetMaxHP() << std::endl;
-	SetCursor(14, 25);
-	std::cout << "ATK = " << player.GetATK() << std::endl;
-	SetCursor(14, 26);
-	std::cout << "EXP = " << player.GetEXP() << std::endl;
-	SetCursor(14, 27);
-	std::cout << "LUK = " << player.GetLUK() << std::endl;
-	SetCursor(14, 28);
-	std::cout << "GOLD = " << player.GetGOLD() << std::endl;
+    // 스탯 창 내부 (X: 12~29 사이) 위치에 맞게 출력 (김준태)
+    SetCursor(12, 23); std::cout << "  [ STAT ]";
+    SetCursor(12, 24); std::cout << " HP  : " << player.GetHP() << "/" << player.GetMaxHP();
+    SetCursor(12, 25); std::cout << " ATK : " << player.GetATK();
+    SetCursor(12, 26); std::cout << " EXP : " << player.GetEXP();
+    SetCursor(12, 27); std::cout << " LUK : " << player.GetLUK();
+    SetCursor(12, 28); std::cout << " GOLD: " << player.GetGOLD();
 }

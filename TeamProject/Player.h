@@ -5,7 +5,10 @@
 #include <vector>
 
 #include "Item.h"
+#include "UISystem.h" // UISystem 사용을 위해 포함 (김준태)
 
+
+class UISystem; // 전방선언 추가 (김준태)
 class Monster;
 class Item;
 
@@ -59,15 +62,15 @@ public:
     void SetGOLD(int newGOLD);
     void SetIsAttackBuffActive(bool value);
 
-    void AddEXP(int amount);
-    void LevelUp();
+    void AddEXP(int amount, UISystem& UI);        // UISystem& UI 추가 (김준태)
+    void LevelUp(UISystem& UI);                   // UISystem& UI (김준태)
 
     void AddItem(Item* item);
 
-    void Attack();
-    void TakeDamage(int damage);
-    void SetDead();
+    void Attack(UISystem& UI);                    // UISystem& UI (김준태)
+    void TakeDamage(int damage, UISystem& UI);    // UISystem& UI (김준태)
+    void SetDead(UISystem& UI);                   // UISystem& UI (김준태)
 
-    void SkillPredation(Monster* monster);
-    void SkillDigestion();
+    void SkillPredation(Monster* monster, UISystem& UI, int& line); // UISystem& UI (김준태)
+    void SkillDigestion(UISystem& UI);                   // UISystem& UI (김준태)
 };

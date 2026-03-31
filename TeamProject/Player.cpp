@@ -93,7 +93,7 @@ void Player::SetHP(int newHP)
 
 void Player::SetMaxHP(int newMaxHP)
 {
-	HP = newMaxHP;
+	MaxHP = newMaxHP;
 }
 
 void Player::SetATK(int newATK)

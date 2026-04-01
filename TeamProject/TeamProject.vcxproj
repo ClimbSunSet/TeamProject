@@ -125,6 +125,7 @@
   <ItemGroup>
     <ClCompile Include="ATKPotion.cpp" />
     <ClCompile Include="BattleSystem.cpp" />
+    <ClCompile Include="EndingCredit.cpp" />
     <ClCompile Include="GameSystem.cpp" />
     <ClCompile Include="Goblin.cpp" />
     <ClCompile Include="HPPotion.cpp" />
@@ -132,25 +133,33 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MiniPig.cpp" />
     <ClCompile Include="Monster.cpp" />
+    <ClCompile Include="MonsterLoading.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SewerRat.cpp" />
+    <ClCompile Include="Title.cpp" />
     <ClCompile Include="UISystem.cpp" />
     <ClCompile Include="WildBoar.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ATKPotion.h" />
     <ClInclude Include="BattleSystem.h" />
+    <ClInclude Include="EndingCredit.h" />
     <ClInclude Include="GameSystem.h" />
     <ClInclude Include="Goblin.h" />
     <ClInclude Include="HPPotion.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="MiniPig.h" />
     <ClInclude Include="Monster.h" />
+    <ClInclude Include="MonsterLoading.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="SewerRat.h" />
     <ClInclude Include="Structs.h" />
+    <ClInclude Include="Title.h" />
     <ClInclude Include="UISystem.h" />
     <ClInclude Include="WildBoar.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="UISystem" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
